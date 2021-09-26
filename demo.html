@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./练习.css">
+</head>
+
+<body>
+    <div class="one">
+        <span>1.第一步</span><span>2.第二步</span><span>3.第三部</span>
+    </div>
+    <div class="two">
+        <p>这是一首简单的小情歌</p>
+        <p>唱出人们心中的曲折</p>
+        <p>我想我很适合</p>
+        <p>当一个歌颂者</p>
+        <p>啦啦啦啦啦啦啦</p>
+        </div>
+    <div class="three">
+        <button class="three-button-one">上一步</button>
+        <button class="three-button-two">下一步</button>
+    </div>
+</body>
+
+<script src="./jquery-1.12.4.js">
+
+</script>
+<script>
+    $(function(){
+        $('.two').eq(0).show('slow');
+        $('.one span').eq(0).addClass('one-span');
+        var num = 0;
+        $('three-button-one').attr('disabled','disabled');
+        $('three-button-one').addClass('one-button');
+        $('three-button-two').on('click',function(){
+            $('three-button-one').removeAttr('disabled');
+            $('three-button-one').addClass('one-button');
+            $('two').children().eq(num).hide();
+            $('three').css('margin-top','73px');
+            $('one span').eq(num).removeClass('one-span');
+            num++;
+            $('two').children().eq(0).show();
+            $('one span').eq(num).addClass('one-span');
+            if(num>=2){
+                $('three-button-two').html('提交')
+                $('two').children().eq(2).show();
+                $('one span').eq(2).addClass('one-span');
+            }
+            if(num>2){
+                alert('已经提交');
+                num=2;
+            }
+        })
+        $('three-button-one').on('click',function(){
+            $('two').children().eq(num).hide();
+            $('three').css('margin-top','73px');
+            $('one span').eq(num).removeClass('one-span')
+            $('')
+        })
+    })
+</script>
+</html>
